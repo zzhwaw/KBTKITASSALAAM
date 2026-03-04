@@ -1,0 +1,1168 @@
+/* RESET & GLOBAL */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+html { scroll-behavior: smooth; }
+section {scroll-margin-top: 50px; }
+body { background-color: #D3E4ED; color: #333; }
+
+.image-placeholder { 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+    background: #eee; 
+    height: 200px; 
+    border-radius: 10px; 
+    margin-bottom: 15px; 
+}
+/* NAVBAR */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #ffffffcc; /* Transparan putih */
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Menjaga logo dan menu tetap sejajar di tengah */
+    padding: 10px 50px;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.logo-container {
+    display: flex;         /* Mengaktifkan mode flex */
+    align-items: center;    /* Ini kunci agar teks & gambar sejajar di tengah secara vertikal */
+    gap: 10px;             /* Memberi jarak antara gambar dan tulisan */
+}
+
+.nav-logo {
+    height: 50px;          /* Atur tinggi logo sesuai kebutuhan */
+    width: auto;           /* Biar lebar gambar menyesuaikan tinggi secara proporsional */
+    display: block;
+}
+
+.logo-text {
+    font-weight: bold;     /* Sesuai permintaan Anda sebelumnya untuk tebal */
+    font-size: 18px;       /* Ukuran font bisa disesuaikan */
+    line-height: 1;        /* Menghilangkan spasi tambahan di atas/bawah teks */
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+}
+
+.navbar ul li {
+    margin-left: 20px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #1e4d7b;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.navbar ul li a:hover {
+    color: #89C4E1; /* Warna berubah saat kursor menempel */
+}
+/* LAYOUT */
+.section-container {
+    padding: 50px 10% 5px; 
+    text-align: center; }
+
+.section-title {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #89C4E1;
+    display: table; /* Menggunakan table agar lebar mengikuti teks tapi tetap dianggap blok */
+    margin: 0 auto 20px; /* Jarak 20px ke bawah */
+    padding: 10px 40px;
+    border-radius: 5px;
+    color: #1e4d7b;
+    font-weight: bold;
+}
+
+/* Styling khusus untuk Kelompok Usia agar berada di bawahnya */
+.sub-title-box {
+    /* Properti Shadow: geser-x geser-y blur sebaran warna */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #bde9ff;
+    display: table; /* Memaksa elemen ini turun ke baris baru */
+    margin: 0 auto 10px; /* Center dan beri jarak ke grid foto di bawahnya */
+    padding: 8px 30px;
+    border-radius: 10px;
+    border: #1e4d7b solid 1px;
+    color: #325274;
+    font-weight: bold;
+    font-size: 14px;
+}
+.section-title-dark { color: #1e4d7b; margin-bottom: 30px; font-size: 24px; }
+
+/* HERO */
+.hero {
+    width: 100%;
+    padding-top: 100px;
+    text-align: center;
+    /* Membuat gradasi langit biru */
+    background: linear-gradient(to bottom, #87CEEB, #D3E4ED); 
+    position: relative;
+    overflow: hidden;
+    min-height: 0%;
+}
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 550px;
+    margin-bottom: 0px;
+}
+/* Membuat Matahari */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 50px;
+    right: 100px;
+    width: 100px;
+    height: 100px;
+    background: #FFD700;
+    border-radius: 50%;
+    box-shadow: 0 0 50px #FFA500;
+    z-index: 0;
+}
+
+/* Membuat Banyak Awan dengan box-shadow */
+.hero::after {
+    content: "☁️";
+    font-size: 80px; /* Ukuran sedikit diperkecil agar tidak menutupi teks */
+    position: absolute;
+    top: 50px;
+    left: 5%;
+    opacity: 0.4;
+    z-index: 0;
+    color: white;
+    
+    /* Format: x y blur warna, (koma) x y blur warna */
+    text-shadow: 
+        150px 40px 2px rgba(255,255,255,0.8),  /* Awan 2 */
+        400px -20px 5px rgba(255,255,255,0.6), /* Awan 3 */
+        800px 60px 0px rgba(255,255,255,0.9),  /* Awan 4 */
+        1100px 10px 3px rgba(255,255,255,0.5); /* Awan 5 */
+}
+
+/* Tambahkan sedikit animasi agar awan bergerak pelan */
+@keyframes moveClouds {
+    from { transform: translateX(0); }
+    to { transform: translateX(20px); }
+}
+
+.hero::after {
+    animation: moveClouds 5s ease-in-out infinite alternate;
+}
+
+
+/* Styling tambahan untuk judul agar tebal sesuai permintaan sebelumnya */
+.logo-text-bold {
+    font-weight: 800;
+    font-size: 32px;
+    color: #1e4d7b;
+    margin-top: 0px;
+}
+/* ABOUT SECTION */
+.about-box {
+    background: #E1F0F7; 
+    padding: 30px; 
+    border: 1px solid #1e4d7b; 
+    line-height: 1.6;
+    
+    /* MODIFIKASI DISINI */
+    border-radius: 20px; /* Pojok kiri atas dibuat siku (0) agar menyatu */
+    margin-top: 0px;               /* Menarik kotak ke atas 1px agar garisnya tertutup judul */
+    position: relative;
+    z-index: 1;
+    font-weight: bold;
+}
+/* Efek Hover untuk Kotak Putih & Kartu Program */
+.card:hover, .blue-square-base:hover {
+    transform: translateY(-5px) scale(1.02); /* Sedikit naik dan zoom */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15), 0 0 15px rgba(255, 255, 255, 0.5); 
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efek pegas/bounce */
+}
+.white-circle-frame img {
+    transition: transform 0.5s ease;
+}
+
+.blue-square-base:hover .white-circle-frame img {
+    transform: scale(1.2); /* Gambar di dalam lingkaran membesar lebih banyak */
+}
+
+.section-title {
+    background: #89C4E1; 
+    display: inline-block; 
+    padding: 12px 40px; 
+    color: #1e4d7b; 
+    font-weight: bold;
+    text-align: center;
+    
+    /* MODIFIKASI DISINI */
+    margin-bottom: 10px;             /* Menghapus jarak bawah agar menempel */
+    position: relative;           /* Membantu tumpukan elemen */
+    z-index: 2;                   /* Berada di atas kotak konten */
+}
+.visi-misi-container { 
+    display: flex; 
+    align-items: center; 
+    gap: 30px; 
+    background: #E1F0F7; 
+    border: #1e4d7b solid 1px;
+    padding: 25px; 
+    border-radius: 20px; 
+    text-align: left; 
+    margin-top: 10px; 
+    font-weight: bold;
+}
+
+.label { 
+    background: #89C4E1; 
+    color: #1e4d7b; 
+    padding: 5px 15px; 
+    border-radius: 5px; 
+    font-weight: bold; 
+    margin-bottom: 10px; 
+    display: inline-block; 
+    margin-top: 10px;}
+
+.visi-misi-text ol {
+    margin-left: 20px; /* Memberikan ruang agar angka terlihat rapi */
+    margin-top: 5px;
+}
+
+.visi-misi-text ol li {
+    margin-bottom: 8px; /* Jarak antar baris misi agar enak dibaca */
+    line-height: 1.5;
+}
+
+.side-logo { 
+    width: 250px; 
+    height: auto;
+}
+
+/* GRIDS & CARDS */
+.grid-3 { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
+    margin-top: 30px;
+
+}
+.card { 
+    background: #fff; 
+    padding: 20px; 
+    border-radius: 10px;
+    border: #1e4d7b solid 1px; 
+}
+.img-placeholder, .img-box { 
+    background: #eee; 
+    height: 150px; 
+    border-radius: 
+    10px; margin-bottom: 
+    15px; overflow: hidden; }
+    
+.img-placeholder img, .img-box img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; }
+
+/* HORIZONTAL SCROLL */
+.horizontal-scroll {
+    display: flex; overflow-x: auto; gap: 15px; padding: 20px 0;
+    scrollbar-width: thin;
+}
+.scroll-item { min-width: 150px; height: 100px; background: #1e4d7b; border-radius: 10px; flex-shrink: 0; }
+.scroll-item img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
+
+/* EKSTRAKULIKULER SLIDER */ /* CONTAINER UTAMA */
+/* --- LAYOUT EKSTRAKURIKULER --- */
+
+.ekskul-flex-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px; 
+    padding: 10px 0%;
+    /* Memotong jarak atas bawaan dari section-container */
+    padding-top: 10px !important; 
+}
+
+.ekskul-main-title {
+    font-size: 100px;
+    font-weight: 800;
+    color: #1e4d7b; 
+    text-align: left;
+    line-height: 0.9;
+    letter-spacing: -2px;
+}
+
+/* --- KONTROL SLIDER & INTERAKSI HOVER --- */
+.slider-controls {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.slider-main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Interaksi saat kursor menempel */
+.slider-main-content:hover .ekskul-caption {
+    opacity: 1; 
+    transform: translateY(0); 
+}
+
+.slider-main-content:hover .blue-square-base {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* --- KOTAK BIRU & LINGKARAN GAMBAR --- */
+.blue-square-base {
+    background-color: #89C4E1; 
+    width: 280px;
+    height: 280px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: all 0.3s ease; /* Untuk efek hover */
+}
+
+.white-circle-frame {
+    width: 220px;
+    height: 220px;
+    background-color: #fff;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.white-circle-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- TEKS DESKRIPSI (SEMBUNYI DI AWAL) --- */
+.ekskul-caption {
+    margin-top: 15px;
+    font-weight: 800;
+    font-size: 18px;
+    color: #333;
+    text-align: center;
+    text-transform: uppercase;
+    
+    /* Setup Sembunyi */
+    opacity: 0;
+    transform: translateY(-15px);
+    transition: all 0.3s ease; 
+}
+
+/* --- TOMBOL NAVIGASI & PANAH --- */
+.slider-btn {
+    background-color: #1e4d7b; 
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s;
+}
+
+.slider-btn:hover {
+    transform: scale(1.1);
+    background-color: #3b82f6;
+}
+
+.arrow {
+    border: solid white;
+    border-width: 0 4px 4px 0;
+    display: inline-block;
+    padding: 6px;
+}
+
+/* Efek transisi halus saat gambar ekstrakurikuler berganti */
+#ekskul-img {
+    transition: opacity 0.2s ease-in-out;
+}
+.right { transform: rotate(-45deg); margin-right: 4px; }
+.left { transform: rotate(135deg); margin-left: 4px; }
+
+/* CONTAINER UTAMA PROGRAM KHUSUS (TIDAK DIUBAH) */
+.section-container-khusus {
+    padding: 50px 10%; /* Sesuaikan padding kiri dan kanan agar menempel dengan judul */
+    width: 100%;
+    overflow: hidden; 
+}
+/* JUDUL PROGRAM KHUSUS (KOTAK KIRI ATAS) */
+.pk-header {
+    padding: 0%; /* Menyesuaikan margin kiri */
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.pk-title-box {
+    background: #89C4E1; /* Warna biru muda mockup */
+    display: inline-block;
+    padding: 10px 30px;
+    border-radius: 10px 10px 10px 0; /* Lengkungan unik mockup */
+    color: #1e4d7b; /* Warna teks biru tua */
+    font-weight: 800;
+    font-size: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* AREA SCROLL HORIZONTAL */
+.pk-scroll-wrapper {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 30px;
+    padding: 50px 0% 50px 0%; /* UBAH DISINI: Tambahkan 10% di kiri dan kanan */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+/* Sembunyikan Scrollbar Chrome/Safari */
+
+/* AREA SCROLL HORIZONTAL */
+.pk-scroll-wrapper {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 30px;
+    /* Memberikan sedikit padding bawah ekstra agar scrollbar tidak menabrak kotak */
+    padding: 15px 0% 10px 0%; 
+    
+    /* UNTUK MOZILLA FIREFOX */
+    scrollbar-width: thin; /* Membuat garisnya tipis elegan */
+    scrollbar-color: #89C4E1 transparent; /* Warna kapsul (biru muda) dan latar (transparan) */
+}
+
+/* 1. Menentukan ketebalan scrollbar horizontal */
+.pk-scroll-wrapper::-webkit-scrollbar {
+    height: 50px; /* Ketebalan garis scroll */
+}
+
+/* 2. Latar belakang jalur scroll (Track) */
+.pk-scroll-wrapper::-webkit-scrollbar-track {
+    background: transparent; /* Dibuat transparan agar bersih */
+    margin: 0 10%; /* KUNCI: Agar panjang scrollbar sejajar lurus dengan judul di atasnya */
+}
+
+/* 4. Efek saat kursor menyentuh garis scroll */
+.pk-scroll-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #1e4d7b; /* Warnanya berubah jadi biru tua saat disentuh */
+}
+
+/* KARTU PEMBUNGKUS (UNTUK HOVER) */
+.pk-card {
+    flex: 0 0 auto; /* Supaya kotak tidak mengecil */
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* KOTAK BIRU PERSEGI (BASE) */
+.pk-square {
+    width: 180px;  /* Ukuran kotak */
+    height: 180px;
+    background-color: #89C4E1; /* Biru muda sesuai mockup */
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1); /* Bayangan halus */
+    transition: all 0.3s ease;
+}
+
+/* LINGKARAN DI DALAM KOTAK */
+.pk-circle {
+    width: 140px; /* Ukuran lingkaran lebih kecil dari kotak */
+    height: 140px;
+    background-color: #1e4d7b; /* Biru tua (placeholder jika gambar loading) */
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #fff; /* Garis putih pinggir lingkaran */
+}
+
+.pk-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* DESKRIPSI (SEMBUNYI DULU) */
+.pk-desc {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #1e4d7b;
+    font-size: 16px;
+    opacity: 0; /* Awalnya tidak terlihat */
+    transform: translateY(-10px); /* Awalnya agak ke atas */
+    transition: all 0.3s ease;
+}
+
+/* --- EFEK HOVER (SAAT KURSOR MENEMPEL) --- */
+
+/* 1. Kotak persegi sedikit naik */
+.pk-card:hover .pk-square {
+    transform: translateY(-5px);
+    background-color: #7ab6d6; /* Sedikit lebih gelap saat disentuh */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* 2. Deskripsi Muncul */
+.pk-card:hover .pk-desc {
+    opacity: 1; /* Jadi terlihat */
+    transform: translateY(0); /* Turun ke posisi normal */
+}
+
+
+/* FASILITAS SEKOLAH */
+.fasilitas-header {
+    text-align: center; /* Judul di tengah sesuai mockup */
+    margin-bottom: 40px;
+}
+
+.fasilitas-title-box {
+    background: #89C4E1;
+    display: inline-block;
+    padding: 15px 50px;
+    border-radius: 10px; /* Lengkungan di semua sudut */
+    color: #1e4d7b;
+    font-weight: 800;
+    font-size: 24px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* GRID TATA LETAK */
+.fasilitas-grid {
+    display: flex;
+    justify-content: center; /* Posisi di tengah jika layar lebar */
+    align-items: center;     /* Lurus secara vertikal */
+    gap: 40px;               /* Jarak antar kotak */
+    
+    /* MODIFIKASI UTAMA AGAR HORIZONTAL */
+    flex-wrap: nowrap;       /* PENTING: Jangan biarkan turun ke baris baru */       
+    /* Aktifkan scroll samping jika layar sempit */
+    
+    padding: 20px 5%;        /* Ruang di kiri kanan */
+    width: 100%;
+    
+    /* Sembunyikan Scrollbar agar terlihat bersih (Opsional) */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.fasilitas-grid::-webkit-scrollbar {
+    display: none;
+}
+/* KARTU FASILITAS (KOTAK PUTIH) */
+.fasilitas-card {
+    /* MODIFIKASI AGAR UKURAN TETAP */
+    flex: 0 0 auto;     /* Mencegah kotak mengecil/gepeng saat layar sempit */
+    position: relative;
+    width: 300px;
+    height: 300px;
+    background: #fff;
+    border: 4px solid #1e4d7b;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* GAMBAR DI DALAMNYA */
+.fasilitas-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* LAYER DESKRIPSI (AWALNYA TERSEMBUNYI DI KIRI) */
+.fasilitas-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(30, 77, 123, 0.9); /* Biru tua transparan */
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    
+    /* KUNCI ANIMASI: Geser ke kiri 100% (keluar kotak) */
+    transform: translateX(-100%); 
+    transition: transform 0.4s ease-in-out; /* Kecepatan animasi geser */
+}
+
+.fasilitas-overlay h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+    border-bottom: 2px solid #89C4E1;
+    padding-bottom: 5px;
+}
+
+.fasilitas-overlay p {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* --- EFEK HOVER (INTERAKSI) --- */
+
+/* 1. Kotak Zoom In saat disentuh */
+.fasilitas-card:hover {
+    transform: scale(1.05); /* Membesar 5% */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+/* 2. Gambar ikut sedikit zoom agar dramatis */
+.fasilitas-card:hover .fasilitas-img {
+    transform: scale(1.1); 
+}
+
+/* 3. Deskripsi Masuk dari Kiri ke Kanan */
+.fasilitas-card:hover .fasilitas-overlay {
+    transform: translateX(0); /* Kembali ke posisi tengah */
+}
+
+/* PPDB SECTION */
+/* --- PPDB SECTION BARU --- */
+.ppdb-section {
+    padding: 50px 5%;
+    background-color: #D3E4ED; /* Background utama */
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Judul Utama di Atas */
+.ppdb-main-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.ppdb-main-header h2 {
+    background: #89C4E1;
+    display: inline-block;
+    padding: 15px 40px;
+    border-radius: 20px; /* Membuat bulat lonjong */
+    color: #1e4d7b;
+    font-weight: 800;
+    font-size: 24px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Wrapper Dua Kolom */
+.ppdb-content-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap; /* Agar responsif di HP */
+}
+
+.ppdb-left-col { flex: 1; max-width: 450px; min-width: 300px; }
+.ppdb-right-col { flex: 1.5; max-width: 700px; min-width: 300px; }
+
+/* STYLE UMUM KARTU (BOX PUTIH DENGAN GARIS TEBAL) */
+.ppdb-card {
+    background: #fff;
+    border: 3px solid #1e4d7b; /* Garis tepi biru tua tebal */
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 6px 6px 0px rgba(30, 77, 123, 0.2); /* Bayangan 'Hard' ala mockup */
+    position: relative;
+}
+
+.ppdb-card h3 {
+    text-align: center;
+    color: #1e4d7b; /* Biru tua */
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+/* --- KOTAK KIRI: SYARAT USIA --- */
+.age-btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.age-btn {
+    padding: 12px;
+    border-radius: 30px; /* Bentuk pil */
+    text-align: center;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+}
+
+.age-btn:hover { transform: scale(1.02); }
+
+.age-title { display: block; font-weight: 800; font-size: 16px; }
+.age-desc { display: block; font-size: 14px; font-weight: 500; }
+
+/* Warna Tombol Usia (Gradasi sesuai mockup) */
+.age-btn.kb { background: linear-gradient(to right, #89C4E1, #5D9CEC); } /* Biru Muda */
+.age-btn.tka { background: #2c6e91; } /* Biru Sedang */
+.age-btn.tkb { background: #2f3b5e; } /* Biru Gelap/Ungu */
+
+
+/* --- KOTAK KIRI: DOKUMEN WAJIB --- */
+.docs-icons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.doc-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Membuat Icon Dokumen dengan SVG */
+.doc-svg {
+    width: 40px;
+    height: 40px;
+    fill: #2f3b5e; /* Warna ikon dokumen */
+}
+
+.doc-item span {
+    font-weight: 800;
+    font-size: 14px;
+    color: #1e4d7b;
+}
+
+
+/* --- KOTAK KANAN: LANGKAH PENDAFTARAN --- */
+.step-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 2px solid #89C4E1; /* Garis kotak langkah */
+    border-radius: 10px;
+    background: #fff;
+}
+
+/* Kotak Angka (1, 2, 3) */
+.step-num {
+    background: #def1fd;
+    color: #1e4d7b;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
+    font-size: 20px;
+    border: 2px solid #1e4d7b; /* Border angka */
+    border-radius: 8px;
+    box-shadow: 3px 3px 0px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+}
+
+.step-text strong {
+    display: block;
+    font-size: 16px;
+    color: #1e4d7b;
+    margin-bottom: 5px;
+}
+
+.step-text p, .step-text li {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.4;
+}
+
+.step-text ul {
+    margin-left: 20px;
+    margin-top: 5px;
+}
+
+/* Layout Khusus QR Code */
+.qr-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.qr-desc {
+    flex: 1;
+    padding-right: 0px;
+    
+}
+
+.qr-img {
+    /* KUNCI PERBAIKAN: */
+    max-width: 100px;  /* Batas maksimal lebar 100px (agar di desktop tidak kegedean) */
+    width: 100%;       /* Di layar sangat sempit, dia akan menyesuaikan lebar wadahnya */
+    height: auto;      /* Tinggi otomatis menyesuaikan agar gambar tetap persegi (tidak gepeng) */
+    
+    /* Styling tambahan agar terlihat seperti di dalam kotak rapi */
+    padding: 5px;              /* Jarak antara gambar dan garis tepi */
+    background: #fff;          /* Latar belakang putih */
+    border: 1px solid #89C4E1; /* Garis tepi tipis biru muda */
+    border-radius: 8px;        /* Sudut sedikit melengkung */
+    display: block;            /* Memastikan posisinya solid */
+    margin: 0 auto;            /* (Opsional) Agar di tampilan mobile dia rata tengah */
+}
+
+
+/* --- KONTAK INFORMASI SECTION --- */
+.contact-section {
+    padding: 50px 5%;
+    background-color: #D3E4ED; /* Background biru muda */
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Header Judul Kontak */
+.contact-main-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.contact-main-header h2 {
+    background: #89C4E1;
+    display: inline-block;
+    padding: 15px 50px;
+    border-radius: 10px; /* Sesuai mockup */
+    color: #1e4d7b; /* Biru tua text */
+    font-weight: 800;
+    font-size: 26px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Wrapper Grid 2 Kolom */
+.contact-content-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Jarak antar kolom kiri dan kanan */
+    align-items: stretch; /* KUNCI: Memaksa kedua kolom Punya tinggi yang SAMA */
+    flex-wrap: wrap; /* Agar aman di HP */
+}
+
+/* Kolom Kiri */
+.contact-left-col {
+    flex: 1;
+    max-width: 450px;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Jarak antara kotak VISIT US dan CONTACT US */
+}
+
+/* Kolom Kanan */
+.contact-right-col {
+    flex: 1.5; /* Lebih lebar sedikit dari kiri */
+    max-width: 650px;
+    min-width: 300px;
+    display: flex; /* Agar anak elemennya bisa full height */
+}
+
+/* STYLE KARTU UMUM (BOX PUTIH BORDER TEBAL) */
+.contact-card {
+    background: #fff;
+    border: 3px solid #1e4d7b;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 6px 6px 0px rgba(30, 77, 123, 0.2);
+    /* Penting untuk layout flex di dalam kartu */
+    display: flex;
+    flex-direction: column; 
+}
+
+.full-height {
+    width: 100%;
+    height: 100%; /* Memaksa kotak ini mengikuti tinggi kolom induknya */
+    justify-content: space-between; /* Mendorong konten (Header di atas, Map di bawah) */
+}
+
+.contact-card h3 {
+    text-align: center;
+    color: #1e4d7b; /* Warna sesuai mockup */
+    font-weight: 800;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.1); /* Efek teks timbul mockup */
+}
+
+/* --- TOMBOL SOSIAL MEDIA (LEFT COL) --- */
+.social-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.social-btn {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    font-weight: 700;
+    font-size: 14px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.social-btn img {
+    width: 24px; 
+    height: 24px;
+    margin-right: 15px;
+}
+.social-btn:not(.no-hover):hover {
+    transform: translateX(5px); /* Geser dikit pas di hover */
+    border-color: #89C4E1;
+}
+
+/* Khusus WA yang ada 2 baris teks */
+.wa-container { align-items: flex-start; }
+.wa-text { display: flex; flex-direction: column; font-size: 13px; }
+
+/* --- INFO SEKOLAH (RIGHT COL) --- */
+.school-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.school-logo {
+    width: 90px;
+    height: auto;
+}
+
+.school-details {
+    text-align: left;
+}
+
+.school-details h4 {
+    font-size: 26px;
+    font-weight: 800;
+    color: #333;
+    margin: 0 0 5px 0;
+    text-transform: uppercase;
+}
+
+.email-row {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.email-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+}
+
+.address-text {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #555;
+    text-align: justify; /* Rata kanan kiri */
+}
+
+/* --- GOOGLE MAP PLACEHOLDER --- */
+/* --- GOOGLE MAP EMBED (BARU) --- */
+
+.map-container {
+    width: 100%;
+    flex-grow: 1; /* Memastikan map memanjang ke bawah mengisi sisa ruang */
+    min-height: 250px; /* Tinggi minimal agar peta enak dilihat */
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden; /* Memotong ujung map agar melengkung rapi di dalam kotak */
+    border: 3px solid #1e4d7b; /* Garis tepi disamakan dengan tema biru tua */
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Memastikan iframe peta memenuhi seluruh kontainer */
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Tombol overlay 'Buka di Maps' (Melayang di atas peta) */
+.btn-buka-map {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: rgba(50, 50, 50, 0.85); /* Warna gelap transparan elegan */
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    z-index: 10; /* Memastikan tombol tidak tertutup peta */
+}
+
+/* Efek saat tombol disentuh kursor */
+.btn-buka-map:hover {
+    background-color: #1e4d7b; /* Berubah biru tema saat disentuh */
+    transform: scale(1.05);
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN (Media Queries)
+   ========================================================= */
+
+/* -----------------------------------------
+   1. TABLET & LAPTOP KECIL (Maksimal 1024px)
+   ----------------------------------------- */
+@media screen and (max-width: 1024px) {
+    /* Navbar sedikit dirapatkan */
+    .navbar { padding: 10px 20px; }
+    .navbar ul li { margin-left: 15px; }
+
+    /* Hero section font agak diperkecil */
+    .hero::after { font-size: 50px; }
+    .hero h1 { font-size: 32px; }
+
+    /* Mengurangi jarak padding utama */
+    .section-container, .ppdb-section, .contact-section { 
+        padding-left: 5%; 
+        padding-right: 5%;
+    }
+    .section-title, .ppdb-main-header h2, .contact-main-header h2, .fasilitas-title-box
+    { padding: 10px 30px;
+        font-size: 15px;
+    } 
+
+    /* Program Khusus & Ekstrakurikuler */
+    .ekskul-flex-wrapper { gap: 40px; }
+    .ekskul-main-title { font-size: 80px; }
+
+    /* Info Kontak agar tetap seimbang */
+    .contact-left-col, .contact-right-col { max-width: 100%; }
+}
+
+/* -----------------------------------------
+   2. TABLET PORTRAIT (Maksimal 768px)
+   ----------------------------------------- */
+@media screen and (max-width: 768px) {
+    /* Navbar tetap ditumpuk (Logo di atas, Menu di bawah) agar rapi */
+    .navbar { 
+        flex-direction: column; 
+        padding: 10px 15px; 
+    }
+    
+    .navbar ul { 
+        margin-top: 12px; 
+        width: 100%;
+        
+        /* KUNCI AGAR LURUS: Paksa jadi 1 baris & izinkan scroll ke samping */
+        flex-wrap: nowrap; 
+        justify-content: flex-start; 
+        overflow-x: auto; 
+        gap: 20px; /* Jarak antar teks menu */
+        padding-bottom: 5px; /* Sedikit ruang di bawah agar tidak terpotong */
+        
+        /* Menyembunyikan tampilan Scrollbar agar bersih */
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    
+    .navbar ul::-webkit-scrollbar { 
+        display: none; /* Sembunyikan scrollbar di Chrome/Safari */
+    }
+    
+    .navbar ul li { 
+        margin-left: 0; 
+        white-space: nowrap; /* Memaksa tulisan panjang seperti 'Kontak Informasi' tidak patah ke bawah */
+    }
+
+    /* ... (Biarkan kode Visi-Misi, Program, Fasilitas, dll tetap seperti sebelumnya) ... */
+    .visi-misi-container { flex-direction: column; text-align: center; }
+    .side-logo { margin-bottom: 20px; }
+    .grid-3 { grid-template-columns: 1fr; }
+    .ekskul-flex-wrapper { flex-direction: column; text-align: center; gap: 30px; }
+    .ekskul-title-area { text-align: center; }
+    .ekskul-main-title { font-size: 60px; text-align: center; }
+    .fasilitas-grid { flex-wrap: wrap; }
+    .school-header { flex-direction: column; text-align: center; align-items: center; }
+    .school-details { text-align: center; }
+    .email-row { justify-content: center; }
+    .address-text { text-align: center; }
+}
+
+/* -----------------------------------------
+   3. SMARTPHONE / HP (Maksimal 480px)
+   ----------------------------------------- */
+@media screen and (max-width: 480px) {
+    /* Navbar Logo & Text diperkecil */
+    .logo-text { font-size: 15px; }
+    .nav-logo { height: 35px; }
+    
+    /* Font Menu Navbar diperkecil agar lebih banyak yang masuk layar */
+    .navbar ul li a { 
+        font-size: 12px; 
+    }
+
+    /* ... (Biarkan kode HP lainnya tetap seperti sebelumnya) ... */
+    .section-title, .ppdb-main-header h2, .contact-main-header h2 { font-size: 15px; padding: 10px 20px; }
+    .ekskul-main-title { font-size: 45px; letter-spacing: 0; }
+    .blue-square-base { width: 220px; height: 220px; }
+    .white-circle-frame { width: 170px; height: 170px; }
+    .step-row { flex-direction: column; align-items: center; text-align: center; }
+    .step-text ul { text-align: left; }
+    .qr-flex { flex-direction: column; gap: 15px; }
+    .qr-desc { padding-right: 0; text-align: center; }
+    .wa-container { align-items: center; }
+    .wa-text { align-items: center; text-align: center; }
+}
+
+
+/* --- PERBAIKAN GAMBAR GEDUNG DI HERO SECTION --- */
+.hero-image-container {
+    width: 100%;
+    margin-top: 30px; /* Jarak antara tulisan "play, learn..." dengan gambar */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Memastikan gambar menempel di bawah */
+}
+
+.hero-image-container img {
+    width: 100%; /* Memaksa gambar mengecil menyesuaikan lebar layar HP */
+    max-width: 1500px; /* Batas maksimal agar di layar laptop tidak terlalu raksasa */
+    height: auto !important; /* KUNCI: Membatalkan height="500" di HTML agar gambar tetap proporsional dan tidak gepeng */
+    display: block;
+    object-fit: contain; /* Memastikan seluruh bagian gedung terlihat */
+}
